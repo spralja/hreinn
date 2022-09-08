@@ -11,6 +11,10 @@ class ResponseStatusTestCase(unittest.TestCase):
     # * 2 keyword arguments (http_version and status_code)
     # * 3 keyword arguments (http_version, status_code, and reason_phrase)
     # * 1 positional arguemnt, a dictionary that is to be interpreted as unpacked
+    # i. e.
+    # (\, http_version, status_code, reason_phrase='')
+    # (*, http_version, status_code, reason_phrase='')
+    # (kwargs)
 
     # Constructor Tests
 
