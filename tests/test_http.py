@@ -187,3 +187,11 @@ class DateTestCase(unittest.TestCase):
         from datetime import timezone, timedelta
         date = http.Date(2022, 9, 8, 18, 9, 59, tzinfo=timezone(timedelta(hours=-3)))
         self.assertEqual('Thu, 08 Sep 2022 21:09:59 GMT', str(date))
+        
+
+class ResponseTestCase(unittest.TestCase):
+    '''
+    Constructor should allow for any combination of dictionary-like objects or tuples concrete instances of Header/Status
+    '''
+
+    # again to inconsistent
