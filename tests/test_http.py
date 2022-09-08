@@ -97,6 +97,10 @@ class HTTPResponseStatusTestCase(unittest.TestCase):
         with self.assertRaises(TypeError):
             status = http.Response.Status({'http-version': '1.1'})
 
+    def test_constructor_exception09(self):
+        with self.assertRaises(TypeError):
+            status = http.Response.Status('test')
+
     # Subscript access
 
     def test_subscript_access00(self):
