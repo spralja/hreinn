@@ -50,40 +50,40 @@ class HTTPResponseStatusTestCase(unittest.TestCase):
         self.assertEqual(str(status), 'HTTP/1.1 200 ')
 
     def test_constructor09(self):
-        status = http.Response.Status(*{'http-version': '1.1', 'status-code': 200})
+        status = http.Response.Status(**{'http-version': '1.1', 'status-code': 200})
         self.assertEqual(str(status), 'HTTP/1.1 200 ')
 
     # Constructor Test with illegal arguments
 
-    def test_constructor_exception01(self):
+    def test_constructor_exception00(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status()
 
-    def test_constructor_exception02(self):
+    def test_constructor_exception01(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status('1.1', 200, 'OK', 'comment')
 
-    def test_constructor_exception03(self):
+    def test_constructor_exception02(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status(http_version='1.1', status_code=200, reason_phrase='OK', comment='comment')
 
-    def test_constructor_exception04(self):
+    def test_constructor_exception03(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status(http_version='1.1', status_code=200, comment='comment')
 
-    def test_constructor_exception05(self):
+    def test_constructor_exception04(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status('1.1', status_code=200)
     
-    def test_constructor_exception06(self):
+    def test_constructor_exception05(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status(http_version='1.1')
 
-    def test_constructor_exception07(self):
+    def test_constructor_exception06(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status({})
 
-    def test_constructor_exception08(self):
+    def test_constructor_exception07(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status(
                 {'http-version': '1.1', 'status-code': 200, 'reason-phrase': 'OK', 'comment': 'comment'}
@@ -93,13 +93,13 @@ class HTTPResponseStatusTestCase(unittest.TestCase):
         with self.assertRaises(TypeError):
             status = http.Response.Status({'http-version': '1.1', 'status-code': 200, 'comment': 'comment'})
     
-    def test_constructor_exception08(self):
+    def test_constructor_exception09(self):
         with self.assertRaises(TypeError):
             status = http.Response.Status({'http-version': '1.1'})
 
-    def test_constructor_exception09(self):
+    def test_constructor_exception10(self):
         with self.assertRaises(TypeError):
-            status = http.Response.Status('test')
+            status = http.Response.Status('tests')
 
     # Subscript access
 
@@ -107,7 +107,7 @@ class HTTPResponseStatusTestCase(unittest.TestCase):
         status = http.Response.Status('1.1', 200, 'OK')
         self.assertEqual(status['http_version'], '1.1')
         self.assertEqual(status['status_code'], 200)
-        self.assertEqual(status['reason_phrase', 'OK'])
+        self.assertEqual(status['reason_phrase'], 'OK')
 
     def test_subscript_access01(self):
         status = http.Response.Status('1.1', 404, 'Not Found')
@@ -129,7 +129,7 @@ class HTTPResponseStatusTestCase(unittest.TestCase):
     def test_subscript_assignment01(self):
         status = http.Response.Status('1.1', 200, 'OK')
 
-        with self.assertRaises(TypeError):
+        with self.assertRaises(KeyError):
             status['comment'] = 'comment'
 
     # Subscript deletion
