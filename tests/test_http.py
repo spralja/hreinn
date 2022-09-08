@@ -3,7 +3,7 @@ import unittest
 from hreinn import http
 
 
-class HTTPResponseStatusTestCase(unittest.TestCase):
+class ResponseStatusTestCase(unittest.TestCase):
     # the Status() constructor takes in either:
     # * 2 positional arguments (http_version and status_code)
     # * 3 positional arguments (http_version, status_code, and reason_phrase)
@@ -169,3 +169,14 @@ class HTTPResponseStatusTestCase(unittest.TestCase):
         self.assertEqual(status.reason_phrase, 'OK')
 
     # Other Dictonary functions ???
+
+class ResponseHeaderTestCase(unittest.TestCase):
+    '''
+        test constructor and __str__
+
+        takes any number of keyword-only arguments, or a positional argument which is a dictionary like object
+    '''
+
+    # no tests for now as there is not complex functionallity, and its hard to test the __str__ method, 
+    #    becuase the order of the header fields isn't consistent, and doesn't have to be
+    
