@@ -3,6 +3,7 @@ import unittest
 from hreinn import http
 
 
+
 class ResponseStatusTestCase(unittest.TestCase):
     # the Status() constructor takes in either:
     # * 2 positional arguments (http_version and status_code)
@@ -172,11 +173,17 @@ class ResponseStatusTestCase(unittest.TestCase):
 
 class ResponseHeaderTestCase(unittest.TestCase):
     '''
-        test constructor and __str__
-
-        takes any number of keyword-only arguments, or a positional argument which is a dictionary like object
+    no tests for now as there is not complex functionallity, and its hard to test the __str__ method, 
+    #    becuase the order of the header fields isn't consistent, and doesn't have to be
     '''
 
-    # no tests for now as there is not complex functionallity, and its hard to test the __str__ method, 
-    #    becuase the order of the header fields isn't consistent, and doesn't have to be
-    
+class DateTestCase(unittest.TestCase):
+    '''
+    test tostr
+    '''
+   
+
+    def test_str00(self):
+        from datetime import timezone, timedelta
+        date = http.Date(2022, 9, 8, 18, 9, 59, tzinfo=timezone(timedelta(hours=-3)))
+        self.assertEqual('Thu, 08 Sep 2022 21:09:59 GMT', str(date))
